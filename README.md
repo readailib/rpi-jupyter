@@ -3,13 +3,13 @@ rpi-jupyter
 
 Docker container with python Environment for raspberry-pi3
 
-Install Stable Docker Community Edition
---------------------------------------------------------------
+## Install Stable Docker Community Edition
+
 
 For RaspberryPi3: https://www.raspberrypi.org/blog/docker-comes-to-raspberry-pi/
 
-Running container for the first time
---------------------------------------------------------------
+## Running container for the first time
+
 
 First run `docker pull rh02/rpi-jupyter` to pull the latest version of image. Run using `docker run -it -p 8080:8080 --name notebook rh02/rpi-jupyter`. This command downloads the prepared image from a public hub, and starts a bash for you.
 
