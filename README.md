@@ -1,7 +1,7 @@
 rpi-jupyter
 ===
 
-Docker container with python Environment for raspberry-pi3
+Docker container with python Environment for raspberry-pi3 HypriotOS
 
 ## Install Stable Docker Community Edition
 
