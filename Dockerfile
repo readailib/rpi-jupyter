@@ -70,22 +70,22 @@ RUN sed -i "/c.NotebookApp.open_browser/c c.NotebookApp.open_browser = False" /r
 
 VOLUME /root/notebooks
 
-# # Add Tini. Tini operates as a process subreaper for jupyter. This prevents kernel crashes.
-# ENV TINI_VERSION 0.14.0
-# ENV CFLAGS="-DPR_SET_CHILD_SUBREAPER=36 -DPR_GET_CHILD_SUBREAPER=37"
+# Add Tini. Tini operates as a process subreaper for jupyter. This prevents kernel crashes.
+ENV TINI_VERSION 0.14.0
+ENV CFLAGS="-DPR_SET_CHILD_SUBREAPER=36 -DPR_GET_CHILD_SUBREAPER=37"
 
-# ADD https://github.com/krallin/tini/archive/v${TINI_VERSION}.tar.gz /root/v${TINI_VERSION}.tar.gz
-# RUN apt-get install -y cmake
-# RUN tar zxvf v${TINI_VERSION}.tar.gz \
-#         && cd tini-${TINI_VERSION} \
-#         && cmake . \
-#         && make \
-#         && cp tini /usr/bin/. \
-#         && cd .. \
-#         && rm -rf "./tini-${TINI_VERSION}" \
-#         && rm "./v${TINI_VERSION}.tar.gz"
+ADD https://github.com/krallin/tini/archive/v${TINI_VERSION}.tar.gz /root/v${TINI_VERSION}.tar.gz
+RUN apt-get install -y cmake
+RUN tar zxvf v${TINI_VERSION}.tar.gz \
+        && cd tini-${TINI_VERSION} \
+        && cmake . \
+        && make \
+        && cp tini /usr/bin/. \
+        && cd .. \
+        && rm -rf "./tini-${TINI_VERSION}" \
+        && rm "./v${TINI_VERSION}.tar.gz"
 
-# ENTRYPOINT ["/usr/bin/tini", "--"]
+ENTRYPOINT ["/usr/bin/tini", "--"]
 
 EXPOSE 8080
 
